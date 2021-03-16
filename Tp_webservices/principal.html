@@ -1,0 +1,77 @@
+<!doctype html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Relação de Cidades e Receita Mensal</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	</head>
+	<body>
+		<header>
+            <div>
+			    <h1>Relação de Receita dos Municípios do Estado de São Paulo</h1>
+            </div>
+		</header>
+		<main class="container">
+            <section>
+				<h3 id="description">
+					<p>	
+					Este sistema utiliza duas Apis. Utiliza a Api do IBGE para a consulta de Estados e Municípios. Porém como a busca ainda
+					é limitada ao Estado de São Paulo, este campo é restrito ao mesmo, no entando todos os municípios do mesmo são
+					originados da API do IBGE. 
+					</p>
+					<p>
+						A segunda API é a api do do Portal da Transparência do Estado de São Paulo, baseado na escolha do usuário do Site.
+						é possível consultar a receita de um município em determinado mês. Os dados disponíveis são : órgão referente, 
+						fonte de receita, origem de recurso e o valor. 
+					</p>
+				</h3>
+				<h2>Cidade</h2>	
+                <br>
+                <br>
+				<form>
+					<div id="divEstado">
+						<label for="selectEstado">Estado :</label>
+						<select id="selectEstado" onclick="selectEstadosClick()">
+                            <option value="" disabled selected>Escolha um Estado</option>
+                        </select>
+					</div>
+					<div id="divCidade">
+						<label for="selectCidade">Cidade :</label>
+						<select id="selectCidade" >
+                            <option value="" disabled selected>Escolha uma Cidade</option>
+                        </select>
+					</div>
+					<div id="divData">
+						<label for="inputCidade">Período :</label>
+						<input id="inputData" type="month">
+					</div>
+				</form>
+			</section>
+            <button id="pesquisarCidade" class="botao bto-principal" onclick="btnPesquisaidadeClick()">Pesquisar Cidade</button>
+			<section>
+				<h2>Quantidade de Receita Mensal do Município</h2>
+                <br>
+                <br>
+				<table class="table">
+					<tr>
+						<th>Órgão</th>
+						<th>Fonte</th>
+						<th>Origem do Recurso</th>
+						<th>Valor</th>
+					</tr>
+					<script id="lineTable" type="text/template">
+						<tr>
+							<td>{{Orgao}}</td>
+							<td>{{Fonte}}</td>
+							<td>{{OrigemRecurso}}</td>
+							<td>{{Valor}}</td>
+						</tr>
+					</script>
+				</table>
+			</section>
+		</main>
+		<script src="https://twitter.github.io/typeahead.js/js/handlebars.js"></script>
+        <script src="action.js"></script>
+	</body>
+</html>
